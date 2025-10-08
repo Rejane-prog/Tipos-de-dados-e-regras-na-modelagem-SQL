@@ -149,3 +149,5 @@ Aqui estão recursos recomendados para aprofundar seu conhecimento em SQL:
  - "Learning SQL" - Alan Beaulieu
 
  - "SQL Performance Explained" - Markus Winand
+
+Pesquisa desenvolvida por Rejane Mendonça e Elizabeth Ribeiro
