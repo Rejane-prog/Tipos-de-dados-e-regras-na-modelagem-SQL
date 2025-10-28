@@ -95,7 +95,7 @@ O atributo arquivo na entidade *Documentos* deve ser um *BLOB (Binary Large Obje
 
 **Tipos Lógicos:**
 
-O **status do Contrato** pode ser um *BOOLEAN* se for apenas **'Ativo' ou 'Inativo'*, simplificando consultas.
+O **status do Contrato** pode ser um *BOOLEAN* se for apenas **'Ativo' ou 'Inativo'**, simplificando consultas.
 
 ### 3.2. Regras de Integridade em Ação (Chaves e Restrições)
 As regras de integridade garantem a lógica de negócios e previnem erros.
@@ -112,7 +112,7 @@ Esta regra mantém a validade dos relacionamentos entre as tabelas, prevenindo "
 
 **Regra de Existência:** O relacionamento Funcionário possui Contrato exige que o *id_funcionario* esteja presente na tabela Contrato como uma **Chave Estrangeira (FOREIGN KEY)**. Isso impede que se cadastre um contrato para um funcionário que não existe.
 
-Relacionamento Obrigatório (1,n): O DER mostra que um Funcionário pertence a um Departamento. Isso é implementado exigindo que o id_depto na tabela Funcionário referencie a PK da tabela Departamento.
+**Relacionamento Obrigatório (1,n):** O DER mostra que um Funcionário pertence a um Departamento. Isso é implementado exigindo que o id_depto na tabela Funcionário referencie a PK da tabela Departamento.
 
 **C. Integridade da Chave e Integridade Definida pelo Usuário**
 Estas regras impõem unicidade em identificadores alternativos e validam dados com regras de negócio específicas.
