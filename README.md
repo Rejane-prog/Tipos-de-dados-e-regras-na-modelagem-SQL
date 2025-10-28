@@ -79,23 +79,23 @@ A escolha do tipo de dado é feita para garantir que o formato do dado seja comp
 
 **Tipos Numéricos para Identificação:** 
 
-Para o id_funcionario, usamos INT ou BIGINT (se a empresa for muito grande), pois são rápidos e garantem a unicidade da Chave Primária. No campo Salário, o valor deve ser DECIMAL(10, 2). O uso de DECIMAL é essencial para valores financeiros, pois garante a precisão exata de duas casas decimais, evitando erros de ponto flutuante.
+Para o *id_funcionario*, usamos *INT ou BIGIN*T (se a empresa for muito grande), pois são rápidos e garantem a unicidade da Chave Primária. No campo *Salário*, o valor deve ser *DECIMAL(10, 2)*. O uso de DECIMAL é essencial para valores financeiros, pois garante a precisão exata de duas casas decimais, evitando erros de ponto flutuante.
 
 **Tipos de Texto:**
 
-O cpf do funcionário e o tipo_contrato devem ser VARCHAR (ou CHAR), pois são identificadores de texto, não números para cálculo.
+O cpf do funcionário e o *tipo_contrato* devem ser *VARCHAR (ou CHAR)*, pois são identificadores de texto, não números para cálculo.
 
 **Tipos de Data:**
 
-A data_nascimento do funcionário e a validade de um documento devem ser DATE, pois armazenam apenas a data, facilitando cálculos como a idade ou a verificação da validade.
+A *data_nascimento* do funcionário e a validade de um documento devem ser *DATE*, pois armazenam apenas a data, facilitando cálculos como a idade ou a verificação da validade.
 
 **Tipos Específicos/Binários:**
 
-O atributo arquivo na entidade Documentos deve ser um BLOB (Binary Large Object), pois armazenará o conteúdo binário do arquivo (como um PDF ou imagem), que não é texto.
+O atributo arquivo na entidade *Documentos* deve ser um *BLOB (Binary Large Object)*, pois armazenará o conteúdo binário do arquivo *(como um PDF ou imagem)*, que não é texto.
 
 **Tipos Lógicos:**
 
-O status do Contrato pode ser um BOOLEAN se for apenas 'Ativo' ou 'Inativo', simplificando consultas.
+O **status do Contrato** pode ser um *BOOLEAN* se for apenas **'Ativo' ou 'Inativo'*, simplificando consultas.
 
 ### 3.2. Regras de Integridade em Ação (Chaves e Restrições)
 As regras de integridade garantem a lógica de negócios e previnem erros.
@@ -103,25 +103,25 @@ As regras de integridade garantem a lógica de negócios e previnem erros.
 **A. Integridade da Entidade (PRIMARY KEY e NOT NULL)**
 Esta regra garante que cada registro seja único e completo.
 
-Identificação Única: O id_funcionario é a Chave Primária (PRIMARY KEY), garantindo que cada pessoa tenha um identificador único. Da mesma forma, id_contrato é a chave primária da entidade Contrato.
+**Identificação Única:** O *id_funcionario* é a *Chave Primária (PRIMARY KEY)*, garantindo que cada pessoa tenha um identificador único. Da mesma forma, **id_contrato** é a *chave primária da entidade Contrato*.
 
-Campos Obrigatórios: Atributos críticos como nome_completo, data_admissão (do Contrato) e o valor do Salário devem ser definidos como NOT NULL, pois a ausência dessa informação torna o registro inválido para o negócio.
+**Campos Obrigatórios:** Atributos críticos como **nome_completo, data_admissão (do Contrato)** e o valor do Salário devem ser definidos como **NOT NULL**, pois a ausência dessa informação torna o registro inválido para o negócio.
 
 **B. Integridade Referencial (FOREIGN KEY)**
 Esta regra mantém a validade dos relacionamentos entre as tabelas, prevenindo "registros órfãos".
 
-Regra de Existência: O relacionamento Funcionário possui Contrato exige que o id_funcionario esteja presente na tabela Contrato como uma Chave Estrangeira (FOREIGN KEY). Isso impede que se cadastre um contrato para um funcionário que não existe.
+**Regra de Existência:** O relacionamento Funcionário possui Contrato exige que o *id_funcionario* esteja presente na tabela Contrato como uma **Chave Estrangeira (FOREIGN KEY)**. Isso impede que se cadastre um contrato para um funcionário que não existe.
 
 Relacionamento Obrigatório (1,n): O DER mostra que um Funcionário pertence a um Departamento. Isso é implementado exigindo que o id_depto na tabela Funcionário referencie a PK da tabela Departamento.
 
 **C. Integridade da Chave e Integridade Definida pelo Usuário**
 Estas regras impõem unicidade em identificadores alternativos e validam dados com regras de negócio específicas.
 
-Unicidade Alternativa: O atributo cpf (e, idealmente, o email_pessoal) deve ter a restrição UNIQUE. Isso assegura que, embora o id_funcionario seja a Chave Primária, não existam dois funcionários diferentes com o mesmo CPF.
+**Unicidade Alternativa:** O atributo cpf **(e, idealmente, o email_pessoal)** deve ter a restrição **UNIQUE**. Isso assegura que, embora o *id_funcionario* seja a Chave Primária, não existam dois funcionários diferentes com o mesmo CPF.
 
-Validação de Negócio (CHECK): Poderíamos aplicar uma regra CHECK na coluna salario_base da entidade Cargo para garantir que o valor seja sempre maior que zero (salario_base > 0).
+**Validação de Negócio (CHECK):** Poderíamos aplicar uma regra **CHECK** na coluna *salario_base* da entidade Cargo para garantir que o valor seja sempre maior que zero **(salario_base > 0)**.
 
-Regras de Exclusão: Em relacionamentos como Funcionário → Documentos, se um funcionário for excluído, a regra ON DELETE CASCADE garantiria que todos os seus documentos relacionados fossem removidos automaticamente, mantendo a consistência do banco.
+**Regras de Exclusão:** Em relacionamentos como **Funcionário → Documentos**, se um funcionário for excluído, a regra *ON DELETE CASCADE* garantiria que todos os seus documentos relacionados fossem removidos automaticamente, mantendo a consistência do banco.
 
 ---
 
